@@ -1,0 +1,1628 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAKUPAY - MTs Pester Al-Fauzan</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#dfffe9,#eef2ff,#fff4d6);
+    color:#183b2a;
+}
+
+/* ================= LOGIN ================= */
+
+#loginPage{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.login-box{
+    width:100%;
+    max-width:390px;
+    background:rgba(255,255,255,.95);
+    padding:35px 25px;
+    border-radius:28px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+}
+
+.logo{
+    width:80px;
+    height:80px;
+    margin:auto;
+    border-radius:24px;
+    background:linear-gradient(135deg,#2e8b57,#58c98a);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+    box-shadow:0 8px 20px rgba(46,139,87,.3);
+}
+
+.login-box h1{
+    margin-top:18px;
+    font-size:32px;
+    letter-spacing:3px;
+}
+
+.school{
+    margin-top:5px;
+    color:#2e8b57;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.login-box p{
+    color:#708078;
+    margin:10px 0 25px;
+}
+
+input,select{
+    width:100%;
+    padding:13px;
+    border:2px solid #e2eee7;
+    border-radius:13px;
+    outline:none;
+    font-size:14px;
+    background:white;
+}
+
+input:focus,select:focus{
+    border-color:#49a878;
+}
+
+button{
+    width:100%;
+    padding:13px;
+    border:0;
+    border-radius:13px;
+    background:linear-gradient(135deg,#2e8b57,#50b97e);
+    color:white;
+    font-weight:bold;
+    font-size:14px;
+    cursor:pointer;
+    margin-top:12px;
+}
+
+button:hover{
+    transform:translateY(-1px);
+}
+
+.error{
+    color:#d94a4a;
+    font-size:13px;
+    margin-top:12px;
+    display:none;
+}
+
+.credit{
+    margin-top:25px;
+    font-size:10px;
+    color:#9aa8a0;
+}
+
+/* ================= NAMA SETELAH LOGIN ================= */
+
+#namePage{
+    min-height:100vh;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.name-box{
+    width:100%;
+    max-width:390px;
+    background:white;
+    padding:30px 25px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.1);
+}
+
+.name-box h2{
+    font-size:23px;
+    margin-bottom:10px;
+}
+
+.name-box p{
+    color:#718078;
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+.name-buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.name-buttons button{
+    margin-top:10px;
+}
+
+.no-save{
+    background:#e8eee9;
+    color:#356048;
+}
+
+/* ================= APP ================= */
+
+#appPage{
+    display:none;
+    max-width:900px;
+    margin:auto;
+    padding:18px;
+}
+
+.header{
+    background:linear-gradient(135deg,#23764a,#53bd80);
+    color:white;
+    padding:25px;
+    border-radius:25px;
+    box-shadow:0 12px 25px rgba(35,118,74,.2);
+    position:relative;
+}
+
+.header h1{
+    font-size:30px;
+    letter-spacing:3px;
+}
+
+.header .school{
+    color:white;
+    margin-top:4px;
+}
+
+.header p{
+    margin-top:8px;
+    opacity:.9;
+}
+
+.user-name{
+    margin-top:15px;
+    font-size:14px;
+    background:rgba(255,255,255,.15);
+    padding:9px 12px;
+    border-radius:12px;
+    display:inline-block;
+}
+
+.logout{
+    position:absolute;
+    right:18px;
+    top:18px;
+    width:auto;
+    padding:8px 12px;
+    margin:0;
+    background:rgba(255,255,255,.18);
+    font-size:11px;
+}
+
+.card{
+    background:rgba(255,255,255,.95);
+    margin-top:16px;
+    padding:20px;
+    border-radius:22px;
+    box-shadow:0 7px 20px rgba(0,0,0,.07);
+}
+
+.card h2{
+    font-size:18px;
+    margin-bottom:15px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.stat{
+    padding:17px;
+    border-radius:17px;
+    background:#f1faf4;
+}
+
+.stat small{
+    color:#718078;
+}
+
+.stat strong{
+    display:block;
+    margin-top:5px;
+    font-size:20px;
+}
+
+.green{color:#24834f;}
+.red{color:#d34d4d;}
+
+label{
+    display:block;
+    font-weight:bold;
+    font-size:13px;
+    margin:12px 0 6px;
+}
+
+.schedule{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.jajan-item{
+    background:#f7fbf8;
+    padding:14px;
+    border-radius:15px;
+    margin-top:10px;
+    border-left:4px solid #46a873;
+}
+
+.jajan-item strong{
+    display:block;
+}
+
+.jajan-item span{
+    display:block;
+    color:#68766e;
+    font-size:13px;
+    margin-top:4px;
+}
+
+.delete{
+    background:#f06a6a;
+    width:auto;
+    padding:7px 10px;
+    font-size:11px;
+    margin-top:8px;
+}
+
+.tabs{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+}
+
+.tab{
+    width:auto;
+    margin:0;
+    padding:10px 16px;
+    background:#edf5ef;
+    color:#377052;
+}
+
+.tab.active{
+    background:#2e8b57;
+    color:white;
+}
+
+.motivation{
+    background:linear-gradient(135deg,#fff4c7,#fffdf2);
+    border-left:5px solid #e5bd38;
+    padding:18px;
+    border-radius:16px;
+    font-weight:bold;
+    line-height:1.5;
+}
+
+canvas{
+    width:100% !important;
+    max-height:280px;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    font-size:10px;
+    color:#87958d;
+}
+
+@media(max-width:600px){
+
+    .grid,.schedule{
+        grid-template-columns:1fr;
+    }
+
+    #appPage{
+        padding:12px;
+    }
+
+    .header h1{
+        font-size:25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- ================= LOGIN ================= -->
+
+<div id="loginPage">
+
+    <div class="login-box">
+
+        <div class="logo">💚</div>
+
+        <h1>SAKUPAY</h1>
+
+        <div class="school">
+            MTs Pester Al-Fauzan
+        </div>
+
+        <p>
+            Atur jajanmu, jaga kantongmu.
+        </p>
+
+        <input
+            type="password"
+            id="pin"
+            placeholder="Masukkan PIN"
+            maxlength="4"
+            inputmode="numeric"
+        >
+
+        <button onclick="login()">
+            MASUK
+        </button>
+
+        <div class="error" id="error">
+            PIN salah. Coba lagi!
+        </div>
+
+        <div class="credit">
+            By Wafa Ayla Nisa'
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= NAMA ================= -->
+
+<div id="namePage">
+
+    <div class="name-box">
+
+        <div style="font-size:45px;">👋</div>
+
+        <h2>Siapa nama Anda?</h2>
+
+        <p>
+            Masukkan nama agar SAKUPAY bisa menyapa Anda.
+        </p>
+
+        <input
+            type="text"
+            id="nameInput"
+            placeholder="Nama Anda"
+            maxlength="30"
+        >
+
+        <div class="name-buttons">
+
+            <button onclick="saveName()">
+                SIMPAN
+            </button>
+
+            <button
+                class="no-save"
+                onclick="dontSaveName()"
+            >
+                TIDAK
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= APP ================= -->
+
+<div id="appPage">
+
+    <div class="header">
+
+        <button
+            class="logout"
+            onclick="logout()"
+        >
+            Keluar
+        </button>
+
+        <h1>💚 SAKUPAY</h1>
+
+        <div class="school">
+            MTs Pester Al-Fauzan
+        </div>
+
+        <p>
+            Jajan boleh, boros jangan!
+        </p>
+
+        <div
+            class="user-name"
+            id="welcomeName"
+        >
+            👋 Halo!
+        </div>
+
+    </div>
+
+
+    <!-- MOTIVASI -->
+
+    <div class="card">
+
+        <h2>✨ Motivasi Hari Ini</h2>
+
+        <div
+            class="motivation"
+            id="motivation"
+        >
+            Sedikit hemat hari ini bisa jadi banyak manfaat besok. 💚
+        </div>
+
+    </div>
+
+
+    <!-- BUDGET -->
+
+    <div class="card">
+
+        <h2>💰 Atur Budget Hari Ini</h2>
+
+        <label>
+            Uang jajan
+        </label>
+
+        <input
+            type="number"
+            id="budgetInput"
+            placeholder="Contoh: 20000"
+        >
+
+        <button onclick="saveBudget()">
+            Simpan Budget
+        </button>
+
+    </div>
+
+
+    <!-- STATISTIK -->
+
+    <div class="card">
+
+        <h2>📊 Ringkasan</h2>
+
+        <div class="grid">
+
+            <div class="stat">
+                <small>Budget</small>
+                <strong id="budgetText">
+                    Rp0
+                </strong>
+            </div>
+
+            <div class="stat">
+                <small>Pengeluaran</small>
+                <strong id="expenseText">
+                    Rp0
+                </strong>
+            </div>
+
+            <div class="stat">
+                <small>Sisa Uang</small>
+                <strong id="remainingText">
+                    Rp0
+                </strong>
+            </div>
+
+            <div class="stat">
+                <small>Jumlah Jajan</small>
+                <strong id="countText">
+                    0
+                </strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JADWAL JAJAN -->
+
+    <div class="card">
+
+        <h2>🍜 Jadwal Jajan</h2>
+
+        <div class="schedule">
+
+            <div>
+
+                <label>
+                    Tanggal
+                </label>
+
+                <input
+                    type="date"
+                    id="dateInput"
+                >
+
+            </div>
+
+            <div>
+
+                <label>
+                    Waktu
+                </label>
+
+                <select id="timeInput">
+
+                    <option>Pagi</option>
+                    <option>Siang</option>
+                    <option>Sore</option>
+                    <option>Malam</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <label>
+            Nama Jajanan
+        </label>
+
+        <input
+            type="text"
+            id="foodInput"
+            placeholder="Contoh: Cilok"
+        >
+
+
+        <label>
+            Harga
+        </label>
+
+        <input
+            type="number"
+            id="priceInput"
+            placeholder="Contoh: 5000"
+        >
+
+
+        <button onclick="addSnack()">
+            + Tambahkan Jajan
+        </button>
+
+    </div>
+
+
+    <!-- REKAP -->
+
+    <div class="card">
+
+        <h2>
+            📅 Rekap Pengeluaran
+        </h2>
+
+        <div class="tabs">
+
+            <button
+                class="tab active"
+                onclick="showRecap('daily',this)"
+            >
+                Hari Ini
+            </button>
+
+            <button
+                class="tab"
+                onclick="showRecap('monthly',this)"
+            >
+                Bulan Ini
+            </button>
+
+            <button
+                class="tab"
+                onclick="showRecap('all',this)"
+            >
+                Semua
+            </button>
+
+        </div>
+
+        <div
+            id="recapResult"
+            style="margin-top:15px;"
+        >
+        </div>
+
+    </div>
+
+
+    <!-- DIAGRAM GARIS -->
+
+    <div class="card">
+
+        <h2>
+            📈 Diagram Garis Pengeluaran
+        </h2>
+
+        <canvas id="expenseChart"></canvas>
+
+    </div>
+
+
+    <!-- DAFTAR -->
+
+    <div class="card">
+
+        <h2>
+            📝 Daftar Jajan
+        </h2>
+
+        <div id="snackList"></div>
+
+    </div>
+
+
+    <footer>
+        SAKUPAY © 2026
+        <br>
+        MTs Pester Al-Fauzan
+        <br>
+        By Wafa Ayla Nisa'
+    </footer>
+
+</div>
+
+
+<script>
+
+/* ================= LOGIN ================= */
+
+const LOGIN_PIN = "1234";
+
+function login(){
+
+    const pin =
+        document.getElementById("pin").value;
+
+    if(pin === LOGIN_PIN){
+
+        document.getElementById("loginPage")
+            .style.display="none";
+
+        /*
+          Cek apakah nama sebelumnya disimpan.
+        */
+
+        const savedName =
+            localStorage.getItem(
+                "sakuPayName"
+            );
+
+        if(savedName){
+
+            document.getElementById("appPage")
+                .style.display="block";
+
+            initialize();
+
+        }else{
+
+            document.getElementById("namePage")
+                .style.display="flex";
+
+        }
+
+    }else{
+
+        document.getElementById("error")
+            .style.display="block";
+
+    }
+
+}
+
+
+document.getElementById("pin")
+    .addEventListener(
+        "keydown",
+        function(e){
+
+            if(e.key==="Enter"){
+                login();
+            }
+
+        }
+    );
+
+
+/* ================= NAMA ================= */
+
+function saveName(){
+
+    const name =
+        document.getElementById(
+            "nameInput"
+        ).value.trim();
+
+    if(name===""){
+
+        alert("Masukkan nama terlebih dahulu!");
+
+        return;
+
+    }
+
+    localStorage.setItem(
+        "sakuPayName",
+        name
+    );
+
+    openApp(name);
+
+}
+
+
+function dontSaveName(){
+
+    const name =
+        document.getElementById(
+            "nameInput"
+        ).value.trim();
+
+    openApp(
+        name || "Pengguna SAKUPAY"
+    );
+
+}
+
+
+function openApp(name){
+
+    document.getElementById("namePage")
+        .style.display="none";
+
+    document.getElementById("appPage")
+        .style.display="block";
+
+    document.getElementById(
+        "welcomeName"
+    ).textContent =
+        "👋 Halo, " + name + "!";
+
+    initialize();
+
+}
+
+
+/* ================= LOGOUT ================= */
+
+function logout(){
+
+    document.getElementById("appPage")
+        .style.display="none";
+
+    document.getElementById("loginPage")
+        .style.display="flex";
+
+    document.getElementById("pin")
+        .value="";
+
+}
+
+
+/* ================= DATA ================= */
+
+let budget=0;
+let snacks=[];
+
+
+function saveData(){
+
+    localStorage.setItem(
+        "sakuPayBudget",
+        budget
+    );
+
+    localStorage.setItem(
+        "sakuPaySnacks",
+        JSON.stringify(snacks)
+    );
+
+}
+
+
+function loadData(){
+
+    budget =
+        Number(
+            localStorage.getItem(
+                "sakuPayBudget"
+            )
+        ) || 0;
+
+    snacks =
+        JSON.parse(
+            localStorage.getItem(
+                "sakuPaySnacks"
+            )
+        ) || [];
+
+}
+
+
+/* ================= FORMAT ================= */
+
+function rupiah(number){
+
+    return "Rp" +
+        Number(number)
+        .toLocaleString("id-ID");
+
+}
+
+
+/* ================= BUDGET ================= */
+
+function saveBudget(){
+
+    const value =
+        Number(
+            document.getElementById(
+                "budgetInput"
+            ).value
+        );
+
+    if(value<=0){
+
+        alert(
+            "Masukkan budget yang benar!"
+        );
+
+        return;
+
+    }
+
+    budget=value;
+
+    saveData();
+
+    update();
+
+    alert(
+        "Budget berhasil disimpan! 💚"
+    );
+
+}
+
+
+/* ================= JAJAN ================= */
+
+function addSnack(){
+
+    const date =
+        document.getElementById(
+            "dateInput"
+        ).value;
+
+    const time =
+        document.getElementById(
+            "timeInput"
+        ).value;
+
+    const food =
+        document.getElementById(
+            "foodInput"
+        ).value.trim();
+
+    const price =
+        Number(
+            document.getElementById(
+                "priceInput"
+            ).value
+        );
+
+
+    if(
+        !date ||
+        !food ||
+        price<=0
+    ){
+
+        alert(
+            "Lengkapi data jajan!"
+        );
+
+        return;
+
+    }
+
+
+    snacks.push({
+
+        date:date,
+        time:time,
+        food:food,
+        price:price
+
+    });
+
+
+    saveData();
+
+
+    document.getElementById(
+        "foodInput"
+    ).value="";
+
+
+    document.getElementById(
+        "priceInput"
+    ).value="";
+
+
+    update();
+
+}
+
+
+/* ================= DELETE ================= */
+
+function deleteSnack(index){
+
+    snacks.splice(index,1);
+
+    saveData();
+
+    update();
+
+}
+
+
+/* ================= TOTAL ================= */
+
+function getTotal(list){
+
+    return list.reduce(
+        (total,item)=>
+            total + Number(item.price),
+        0
+    );
+
+}
+
+
+/* ================= UPDATE ================= */
+
+function update(){
+
+    const total =
+        getTotal(snacks);
+
+    const remaining =
+        budget-total;
+
+
+    document.getElementById(
+        "budgetText"
+    ).textContent =
+        rupiah(budget);
+
+
+    document.getElementById(
+        "expenseText"
+    ).textContent =
+        rupiah(total);
+
+
+    document.getElementById(
+        "remainingText"
+    ).textContent =
+        rupiah(remaining);
+
+
+    document.getElementById(
+        "countText"
+    ).textContent =
+        snacks.length;
+
+
+    document.getElementById(
+        "remainingText"
+    ).className =
+        remaining<0
+        ? "red"
+        : "green";
+
+
+    displaySnacks();
+
+    showRecap(
+        "daily",
+        document.querySelector(
+            ".tab.active"
+        )
+    );
+
+    drawChart();
+
+}
+
+
+/* ================= DAFTAR ================= */
+
+function displaySnacks(){
+
+    const container =
+        document.getElementById(
+            "snackList"
+        );
+
+
+    if(snacks.length===0){
+
+        container.innerHTML=
+            "<p>Belum ada jajan yang dicatat. 🌱</p>";
+
+        return;
+
+    }
+
+
+    container.innerHTML="";
+
+
+    snacks
+        .slice()
+        .sort(
+            (a,b)=>
+                new Date(b.date) -
+                new Date(a.date)
+        )
+        .forEach(item=>{
+
+            const originalIndex =
+                snacks.indexOf(item);
+
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.className=
+                "jajan-item";
+
+
+            div.innerHTML=`
+
+                <strong>
+                    🍜 ${item.food}
+                </strong>
+
+                <span>
+                    📅 ${formatDate(item.date)}
+                    • ${item.time}
+                </span>
+
+                <span>
+                    💸 ${rupiah(item.price)}
+                </span>
+
+                <button
+                    class="delete"
+                    onclick="deleteSnack(${originalIndex})"
+                >
+                    Hapus
+                </button>
+
+            `;
+
+
+            container.appendChild(div);
+
+        });
+
+}
+
+
+/* ================= REKAP ================= */
+
+function showRecap(type,button){
+
+    if(button){
+
+        document
+            .querySelectorAll(".tab")
+            .forEach(
+                tab=>
+                    tab.classList.remove(
+                        "active"
+                    )
+            );
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+
+    const now =
+        new Date();
+
+    let filtered=[];
+
+
+    if(type==="daily"){
+
+        const today =
+            getToday();
+
+        filtered =
+            snacks.filter(
+                item=>
+                    item.date===today
+            );
+
+    }
+
+    else if(type==="monthly"){
+
+        const month =
+            now.getFullYear() +
+            "-" +
+            String(
+                now.getMonth()+1
+            ).padStart(2,"0");
+
+
+        filtered =
+            snacks.filter(
+                item=>
+                    item.date.startsWith(
+                        month
+                    )
+            );
+
+    }
+
+    else{
+
+        filtered=snacks;
+
+    }
+
+
+    const total =
+        getTotal(filtered);
+
+
+    document.getElementById(
+        "recapResult"
+    ).innerHTML=`
+
+        <div class="grid">
+
+            <div class="stat">
+                <small>
+                    Jumlah Jajan
+                </small>
+
+                <strong>
+                    ${filtered.length}
+                </strong>
+            </div>
+
+            <div class="stat">
+                <small>
+                    Total Pengeluaran
+                </small>
+
+                <strong>
+                    ${rupiah(total)}
+                </strong>
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* ================= DATE ================= */
+
+function getToday(){
+
+    const d =
+        new Date();
+
+
+    return d.getFullYear() +
+        "-" +
+        String(
+            d.getMonth()+1
+        ).padStart(2,"0") +
+        "-" +
+        String(
+            d.getDate()
+        ).padStart(2,"0");
+
+}
+
+
+function formatDate(date){
+
+    const d =
+        new Date(
+            date+"T00:00:00"
+        );
+
+
+    return d.toLocaleDateString(
+        "id-ID",
+        {
+            day:"numeric",
+            month:"short",
+            year:"numeric"
+        }
+    );
+
+}
+
+
+/* ================= DIAGRAM GARIS ================= */
+
+function drawChart(){
+
+    const canvas =
+        document.getElementById(
+            "expenseChart"
+        );
+
+
+    const ctx =
+        canvas.getContext("2d");
+
+
+    const width =
+        canvas.width =
+            canvas.offsetWidth*2;
+
+
+    const height =
+        canvas.height =
+            280*2;
+
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    const sorted =
+        snacks
+        .slice()
+        .sort(
+            (a,b)=>
+                new Date(a.date) -
+                new Date(b.date)
+        );
+
+
+    if(sorted.length===0){
+
+        ctx.font="28px Arial";
+
+        ctx.textAlign="center";
+
+        ctx.fillText(
+            "Belum ada data",
+            width/2,
+            height/2
+        );
+
+        return;
+
+    }
+
+
+    const daily={};
+
+
+    sorted.forEach(item=>{
+
+        if(!daily[item.date]){
+            daily[item.date]=0;
+        }
+
+        daily[item.date]
+            +=Number(item.price);
+
+    });
+
+
+    const dates =
+        Object.keys(daily)
+        .slice(-7);
+
+
+    const values =
+        dates.map(
+            date=>daily[date]
+        );
+
+
+    const max =
+        Math.max(
+            ...values,
+            10000
+        );
+
+
+    const left=70;
+    const right=25;
+    const top=30;
+    const bottom=55;
+
+
+    const chartWidth =
+        width-left-right;
+
+
+    const chartHeight =
+        height-top-bottom;
+
+
+    /* GRID */
+
+    ctx.strokeStyle="#dce9e0";
+    ctx.lineWidth=2;
+
+
+    for(let i=0;i<5;i++){
+
+        const y =
+            top +
+            chartHeight -
+            (chartHeight/4)*i;
+
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            left,
+            y
+        );
+
+        ctx.lineTo(
+            width-right,
+            y
+        );
+
+        ctx.stroke();
+
+    }
+
+
+    /* GARIS */
+
+    ctx.strokeStyle="#2e8b57";
+    ctx.lineWidth=6;
+    ctx.lineJoin="round";
+    ctx.lineCap="round";
+
+
+    ctx.beginPath();
+
+
+    values.forEach(
+        (value,i)=>{
+
+            const x =
+                left +
+                (
+                    chartWidth /
+                    Math.max(
+                        values.length-1,
+                        1
+                    )
+                )*i;
+
+
+            const y =
+                top +
+                chartHeight -
+                (
+                    value/max
+                )*chartHeight;
+
+
+            if(i===0)
+                ctx.moveTo(x,y);
+            else
+                ctx.lineTo(x,y);
+
+        }
+    );
+
+
+    ctx.stroke();
+
+
+    /* TITIK */
+
+    ctx.fillStyle="#2e8b57";
+
+
+    values.forEach(
+        (value,i)=>{
+
+            const x =
+                left +
+                (
+                    chartWidth /
+                    Math.max(
+                        values.length-1,
+                        1
+                    )
+                )*i;
+
+
+            const y =
+                top +
+                chartHeight -
+                (
+                    value/max
+                )*chartHeight;
+
+
+            ctx.beginPath();
+
+            ctx.arc(
+                x,
+                y,
+                8,
+                0,
+                Math.PI*2
+            );
+
+            ctx.fill();
+
+        }
+    );
+
+
+    /* LABEL TANGGAL */
+
+    ctx.fillStyle="#60756a";
+    ctx.font="22px Arial";
+    ctx.textAlign="center";
+
+
+    dates.forEach(
+        (date,i)=>{
+
+            const x =
+                left +
+                (
+                    chartWidth /
+                    Math.max(
+                        dates.length-1,
+                        1
+                    )
+                )*i;
+
+
+            ctx.fillText(
+                date.substring(8),
+                x,
+                height-20
+            );
+
+        }
+    );
+
+}
+
+
+/* ================= MOTIVASI ================= */
+
+const motivations=[
+
+    "💚 Jajan secukupnya, simpan sisanya untuk sesuatu yang lebih penting.",
+
+    "🌱 Hemat bukan berarti tidak boleh jajan, tapi tahu kapan harus berhenti.",
+
+    "✨ Uang kecil yang dijaga hari ini bisa menjadi sesuatu yang besar nanti.",
+
+    "🎯 Punya tujuan bikin kita lebih mudah menahan keinginan.",
+
+    "💰 Jangan sampai uang habis duluan sebelum kebutuhan selesai.",
+
+    "🌟 Kamu yang mengatur uang, bukan uang yang mengatur kamu.",
+
+    "🍜 Jajan boleh, asal tetap ingat budget!",
+
+    "🚀 Sedikit disiplin sekarang, lebih tenang nanti."
+
+];
+
+
+function randomMotivation(){
+
+    const random =
+        Math.floor(
+            Math.random() *
+            motivations.length
+        );
+
+
+    document.getElementById(
+        "motivation"
+    ).textContent =
+        motivations[random];
+
+}
+
+
+/* ================= INIT ================= */
+
+function initialize(){
+
+    loadData();
+
+
+    document.getElementById(
+        "dateInput"
+    ).value =
+        getToday();
+
+
+    document.getElementById(
+        "budgetInput"
+    ).value =
+        budget || "";
+
+
+    randomMotivation();
+
+
+    update();
+
+}
+
+</script>
+
+</body>
+</html>
+```
